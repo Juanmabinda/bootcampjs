@@ -11,10 +11,10 @@ interface grupoMusical {
 
 const estilo: string = "font-weigth: bold; font-size: 2rem; background-color: green";
 
-const popRock: string = "Pop Rock";
-const rock: string = "Rock";
-const hardRock: string = "Hard Rock";
-const clasica: string = "Clásica";
+const popRock: string = "🎵 Pop Rock";
+const rock: string = "🎸 Rock";
+const hardRock: string = "🤘 Hard Rock";
+const clasica: string = "🎼 Clásica";
 
 const grupo1 : grupoMusical = {
   nombre: "The Beatles",
