@@ -36,12 +36,15 @@ function sumar() {
 
 function definirTurno() {
   const turno = document.getElementById("numero-turno");
-  const nuevoTurno = parseInt((document.getElementById("cambiar-numero") as HTMLInputElement).value);
-  if (nuevoTurno >= 0) {
-    if (turno !== null && turno !== undefined) {
-      turno.innerHTML = nuevoTurno.toString().padStart(2, "0");
+  const nuevoTurno = document.getElementById("cambiar-numero");
+  if (nuevoTurno !== null && nuevoTurno !== undefined) {
+    if(parseInt((nuevoTurno as HTMLInputElement).value) >= 0) {
+      if (turno !== null && turno !== undefined) {
+        turno.innerHTML = (nuevoTurno as HTMLInputElement).value.toString().padStart(2, "0");
+        (nuevoTurno as HTMLInputElement).value = "";
+      };
     };
-  };
+  }
 };
 
 
