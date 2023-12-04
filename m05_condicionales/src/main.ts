@@ -1,21 +1,21 @@
 import "./style.css";
 
 let puntuacion : number = 0;
-const BOTON_DAME_CARTA = document.getElementById("dame-carta");
-const BOTON_ME_PLANTO = document.getElementById("me-planto");
-const BOTON_NUEVA_PARTIDA = document.getElementById("nueva-partida");
-const BOTON_VER_CARTA = document.getElementById("ver-carta");
+const BOTON_DAME_CARTA : HTMLElement | null = document.getElementById("dame-carta");
+const BOTON_ME_PLANTO : HTMLElement | null = document.getElementById("me-planto");
+const BOTON_NUEVA_PARTIDA : HTMLElement | null = document.getElementById("nueva-partida");
+const BOTON_VER_CARTA : HTMLElement | null = document.getElementById("ver-carta");
 
 
 const muestraPuntuacion = () : void => {
-  const elementoPuntuacion = document.getElementById("puntuacion");
+  const elementoPuntuacion : HTMLElement | null = document.getElementById("puntuacion");
   if (elementoPuntuacion) {
     elementoPuntuacion.innerHTML = `Tu puntuación: ${puntuacion.toString()}`;
   };
 }
 
 const dameCarta = () : void => {
-  let numeroAleatorio = Math.floor(Math.random() * 12) + 1;
+  let numeroAleatorio : number = Math.floor(Math.random() * 12) + 1;
   if (BOTON_ME_PLANTO instanceof HTMLButtonElement) {
     BOTON_ME_PLANTO.disabled = false;
   }
@@ -36,8 +36,8 @@ const dameCarta = () : void => {
 };
 
 const mostrarCarta = (numero : number) : void => {
-  let src = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
-  const carta = document.getElementById("carta");
+  let src : string = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
+  const carta : HTMLElement | null = document.getElementById("carta");
 
   switch (numero) {
     case 1:
@@ -92,7 +92,7 @@ const mostrarCarta = (numero : number) : void => {
 };
 
 const evaluaPuntuacion = () : void => {
-  const gameOverElement = document.getElementById("game-over");
+  const gameOverElement : HTMLElement | null = document.getElementById("game-over");
 
   if (puntuacion > 7.5) {
     if (gameOverElement) {
@@ -119,16 +119,16 @@ const sumarPuntuacion = (numero : number) : void => {
   puntuacion += numero;
 };
 
-const mePlanto = () => {
+const mePlanto = () : void => {
   puntuacionFinal();
   deshabilitaBotonDameCarta();
   deshabilitaBotonMePlanto();
   queHubieraPasado();
 };
 
-const puntuacionFinal = () => {
-  const puntuacionMePlantoElemento = document.getElementById("puntuacion-me-planto");
-  let mensaje = "";
+const puntuacionFinal = () : void => {
+  const puntuacionMePlantoElemento : HTMLElement | null = document.getElementById("puntuacion-me-planto");
+  let mensaje : string = "";
 
   if (puntuacion < 5) {
     mensaje = "Has sido muy conservador 🥴🥴";
@@ -145,11 +145,11 @@ const puntuacionFinal = () => {
   };
 };
 
-const comenzarNuevaPartida  = () => {
+const comenzarNuevaPartida  = () : void => {
   location.reload()
 }
 
-const queHubieraPasado = () => {
+const queHubieraPasado = () : void => {
   const textoQueHubieraPasado = document.getElementById("que-hubiera-pasado");
   if (textoQueHubieraPasado) {
     textoQueHubieraPasado.innerHTML = "Quieres ver cual hubiera sido la siguiente carta? 👇 "
@@ -162,7 +162,7 @@ const queHubieraPasado = () => {
 };
 
 const verSiguienteCarta = () : void => {
-  let numeroAleatorio = Math.floor(Math.random() * 12) + 1;
+  let numeroAleatorio : number = Math.floor(Math.random() * 12) + 1;
 
   if (numeroAleatorio == 8) {
     numeroAleatorio = 7;
@@ -183,4 +183,4 @@ BOTON_DAME_CARTA?.addEventListener("click", dameCarta);
 
 BOTON_NUEVA_PARTIDA?.addEventListener("click", comenzarNuevaPartida);
 
-BOTON_VER_CARTA?.addEventListener("click", verSiguienteCarta )
+BOTON_VER_CARTA?.addEventListener("click", verSiguienteCarta);
