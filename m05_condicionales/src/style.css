@@ -18,7 +18,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-image: url(https://img.freepik.com/free-vector/green-geometric-background-patricks-day-colors_24908-58471.jpg?w=826&t=st=1701668302~exp=1701668902~hmac=a9eab2a6d26359937d1158787f217ea9826a34d5edc7ee83b2a9a3b5bd62ff21);
-
+  background-size: cover;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
