@@ -96,7 +96,7 @@ const evaluaPuntuacion = () : void => {
 
   if (puntuacion > 7.5) {
     if (gameOverElement) {
-      gameOverElement.innerHTML = "HAS PERDIDO";
+      gameOverElement.innerHTML = "Te gusta el riesgo! Pero esta vez te has pasado 😅😵";
       deshabilitaBotonDameCarta();
       deshabilitaBotonMePlanto();
     };
