@@ -96,7 +96,7 @@ const evaluaPuntuacion = () : void => {
 
   if (puntuacion > 7.5) {
     if (gameOverElement) {
-      gameOverElement.innerHTML = "Te gusta el riesgo! Pero esta vez te has pasado 😅😵";
+      gameOverElement.innerHTML = "Te gusta el riesgo! Esta vez te has pasado 😅😵";
       deshabilitaBotonDameCarta();
       deshabilitaBotonMePlanto();
     };
@@ -146,7 +146,36 @@ const puntuacionFinal = () : void => {
 };
 
 const comenzarNuevaPartida  = () : void => {
-  location.reload()
+  puntuacion = 0;
+  muestraPuntuacion();
+  const gameOverElement = document.getElementById("game-over");
+  const carta = document.getElementById("carta");
+  const puntuacionMePlantoElemento : HTMLElement | null = document.getElementById("puntuacion-me-planto");
+  const textoQueHubieraPasado = document.getElementById("que-hubiera-pasado");
+  if (textoQueHubieraPasado) {
+    textoQueHubieraPasado.innerHTML = ""
+  }
+
+  if (BOTON_VER_CARTA instanceof HTMLButtonElement) {
+    BOTON_VER_CARTA.disabled = true;
+  };
+
+  if (gameOverElement) {
+    gameOverElement.innerHTML = "";
+  };
+
+  if (carta instanceof HTMLImageElement) {
+    carta.src = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
+  };
+
+  if (puntuacionMePlantoElemento) {
+    puntuacionMePlantoElemento.innerHTML = "";
+  }
+
+  if (BOTON_DAME_CARTA instanceof HTMLButtonElement) {
+    BOTON_DAME_CARTA.disabled = false;
+  };
+
 }
 
 const queHubieraPasado = () : void => {
