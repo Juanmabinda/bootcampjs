@@ -6,47 +6,44 @@ Se agrega una validación para que el número de turno no sea negativo tanto
 cuando se presiona el botón "Anterior" o se define un nuevo turno.
  */
 
+let turno : number = 0;
+
 function reset() : void {
-  const turno : HTMLElement | null = document.getElementById("numero-turno");
-  if (turno !== null && turno !== undefined) {
-    turno.innerHTML = "00";
-  };
+  turno = 0;
+  pintarTurno();
 };
 
 function restar() : void {
-  const turno : HTMLElement | null = document.getElementById("numero-turno");
-  if (turno !== null && turno !== undefined) {
-  let turnoActual : number = parseInt(turno.innerHTML);
-  const nuevoTurno : number = turnoActual -= 1;
-  if (turnoActual >= 0) {
-    turno.innerHTML = nuevoTurno.toString().padStart(2, "0");
-  };
-  };
+  turno--;
+  pintarTurno()
 };
 
 function sumar() : void {
-  const turno : HTMLElement | null = document.getElementById("numero-turno");
-  if (turno !== null && turno !== undefined) {
-    let turnoActual : number = parseInt(turno.innerHTML);
-    const nuevoTurno : number = turnoActual += 1;
-    turno.innerHTML = nuevoTurno.toString().padStart(2, "0");
-  }
-
+  turno++;
+  pintarTurno()
 };
 
 function definirTurno() : void {
-  const turno : HTMLElement | null = document.getElementById("numero-turno");
   const nuevoTurno : HTMLElement | null = document.getElementById("cambiar-numero");
-  if (nuevoTurno !== null && nuevoTurno !== undefined) {
-    if(parseInt((nuevoTurno as HTMLInputElement).value) >= 0) {
-      if (turno !== null && turno !== undefined) {
-        turno.innerHTML = (nuevoTurno as HTMLInputElement).value.toString().padStart(2, "0");
-        (nuevoTurno as HTMLInputElement).value = "";
-      };
-    };
-  }
-};
 
+  if (nuevoTurno !== null && nuevoTurno !== undefined) {
+    if (nuevoTurno instanceof HTMLInputElement) {
+      if(parseInt(nuevoTurno.value) >= 0) {
+        turno = parseInt(nuevoTurno.value.padStart(2, "0"));
+        pintarTurno()
+        };
+      };
+    }
+  };
+
+const pintarTurno = () :void => {
+  const pintarTurnoElement : HTMLElement | null = document.getElementById("numero-turno");
+  if (turno >= 0) {
+    if (pintarTurnoElement) {
+      pintarTurnoElement.innerHTML = turno.toString().padStart(2, "0");
+    };
+  };
+};
 
 const siguiente : HTMLElement | null = document.getElementById("siguiente");
 if (siguiente !== null && siguiente !== undefined) {
