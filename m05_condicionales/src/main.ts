@@ -155,15 +155,15 @@ const puntuacionFinal = () : void => {
   let mensaje : string = "";
 
   if (puntuacion < 5) {
-    mensaje = "Has sido muy conservador 🥴🥴";
+    mensaje = "Has sido muy conservador 🥴";
   } else if (puntuacion < 6 ) {
-    mensaje = "Te ha entrado el canguelo eh? 🤭🤭🤭";
+    mensaje = "Te ha entrado el canguelo eh? 🤭🤭";
   } else if (puntuacion >= 6 && puntuacion <= 7) {
-    mensaje = "Casi casi... 🙃🙃🙃";
+    mensaje = "Casi casi... 🙃";
   } else if (puntuacion === 7.5) {
     mensaje = "¡Lo has clavado! ¡Enhorabuena! 🎉🎉🎉🎊";
   }else if(puntuacion > 7.5) {
-    mensaje = "Te gusta el riesgo! Esta vez te has pasado 😅😵";
+    mensaje = "Lo siento, has perdido 😵";
     deshabilitaBotonDameCarta();
     deshabilitaBotonMePlanto();
   }
