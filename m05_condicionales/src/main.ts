@@ -151,7 +151,7 @@ const mePlanto = () : void => {
 };
 
 const puntuacionFinal = () : void => {
-  const puntuacionMePlantoElemento : HTMLElement | null = document.getElementById("puntuacion-me-planto");
+
   let mensaje : string = "";
 
   if (puntuacion < 5) {
@@ -168,6 +168,12 @@ const puntuacionFinal = () : void => {
     deshabilitaBotonMePlanto();
   }
 
+  pintarMensajeFinal(mensaje);
+  
+};
+
+const pintarMensajeFinal = (mensaje : string) :void => {
+  const puntuacionMePlantoElemento : HTMLElement | null = document.getElementById("puntuacion-me-planto");
   if (puntuacionMePlantoElemento) {
     puntuacionMePlantoElemento.innerHTML = mensaje;
   };
