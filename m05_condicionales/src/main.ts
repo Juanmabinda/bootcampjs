@@ -198,13 +198,14 @@ const reiniciarPuntuacion = () => puntuacion = 0;
 
 
 const comenzarNuevaPartida  = () : void => {
+  colocarCartaDadaVuelta();
+  reiniciarMensajes();
   reiniciarPuntuacion();
   muestraPuntuacion();
-  reiniciarMensajes();
-  deshabilitaBotonVerCarta();
-  colocarCartaDadaVuelta();
   habilitaBotonDameCarta();
-}
+  deshabilitaBotonVerCarta();
+  deshabilitaBotonMePlanto();
+};
 
 const queHubieraPasado = () : void => {
   const textoQueHubieraPasado = document.getElementById("que-hubiera-pasado");
