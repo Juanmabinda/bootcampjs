@@ -1,6 +1,6 @@
 import "./style.css";
 
-const eventos = () => {
+const eventos = () :void => {
   BOTON_ME_PLANTO?.addEventListener("click", mePlanto);
 
   BOTON_DAME_CARTA?.addEventListener("click", function() { dameCarta(generaCartaAleatoria()) } );
@@ -12,6 +12,33 @@ const eventos = () => {
 
 document.addEventListener("DOMContentLoaded", eventos);
 
+interface Cartas {
+  back: string;
+  as: string;
+  dos: string;
+  tres: string;
+  cuatro: string;
+  cinco: string;
+  seis: string;
+  siete: string;
+  sota: string;
+  caballo: string;
+  rey: string;
+};
+
+const cartas : Cartas = {
+  back: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg",
+  as: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/1_as-copas.jpg",
+  dos: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/2_dos-copas.jpg",
+  tres: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/3_tres-copas.jpg",
+  cuatro: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/4_cuatro-copas.jpg",
+  cinco: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/5_cinco-copas.jpg",
+  seis: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/6_seis-copas.jpg",
+  siete: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/7_siete-copas.jpg",
+  sota: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/10_sota-copas.jpg",
+  caballo: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/11_caballo-copas.jpg",
+  rey: "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/12_rey-copas.jpg"
+};
 
 let puntuacion : number = 0;
 
@@ -54,53 +81,53 @@ const dameCarta = (numero : number) : void => {
 };
 
 const mostrarCarta = (numero : number) : void => {
-  let srcCartaBack : string = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
+  let srcCartaBack : string = cartas.back;
 
   const carta : HTMLElement | null = document.getElementById("carta");
 
   switch (numero) {
     case 1:
-      srcCartaBack = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/1_as-copas.jpg";
+      srcCartaBack = cartas.as;
       sumarPuntuacion(1);
       break;
     case 2:
-      srcCartaBack = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/2_dos-copas.jpg";
+      srcCartaBack = cartas.dos;
       sumarPuntuacion(2);
       break;
     case 3:
-      srcCartaBack = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/3_tres-copas.jpg";
+      srcCartaBack = cartas.tres;
       sumarPuntuacion(3);
       break;
     case 4:
-      srcCartaBack = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/4_cuatro-copas.jpg";
+      srcCartaBack = cartas.cuatro;
       sumarPuntuacion(4);
       break;
     case 5:
-      srcCartaBack = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/5_cinco-copas.jpg";
+      srcCartaBack = cartas.cinco;
       sumarPuntuacion(5);
       break;
     case 6:
-      srcCartaBack = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/6_seis-copas.jpg";
+      srcCartaBack = cartas.seis;
       sumarPuntuacion(6);
       break;
     case 7:
-      srcCartaBack = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/7_siete-copas.jpg";
+      srcCartaBack = cartas.siete;
       sumarPuntuacion(7);
       break;
     case 10:
-      srcCartaBack = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/10_sota-copas.jpg";
+      srcCartaBack = cartas.sota;
       sumarPuntuacion(0.5);
       break;
     case 11:
-      srcCartaBack = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/11_caballo-copas.jpg";
+      srcCartaBack = cartas.caballo;
       sumarPuntuacion(0.5);
       break;
     case 12:
-      srcCartaBack = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/12_rey-copas.jpg";
+      srcCartaBack = cartas.rey;
       sumarPuntuacion(0.5);
       break;
     default:
-      srcCartaBack = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
+      srcCartaBack = cartas.back;
       sumarPuntuacion(0.5);
       break;
     };
@@ -195,7 +222,7 @@ const pintarMensajeFinal = (mensaje : string) :void => {
 const colocarCartaDadaVuelta = () :void => {
   const carta = document.getElementById("carta");
   if (carta instanceof HTMLImageElement) {
-    carta.src = "https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg";
+    carta.src = cartas.back;
   };
 };
 
