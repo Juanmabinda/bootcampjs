@@ -6,6 +6,31 @@ Se agrega una validación para que el número de turno no sea negativo tanto
 cuando se presiona el botón "Anterior" o se define un nuevo turno.
  */
 
+const eventos = () => {
+  const siguiente : HTMLElement | null = document.getElementById("siguiente");
+  if (siguiente !== null && siguiente !== undefined) {
+    siguiente.addEventListener("click", sumar);
+  };
+
+  const anterior : HTMLElement | null = document.getElementById("anterior");
+  if (anterior !== null && anterior !== undefined) {
+    anterior.addEventListener("click", restar);
+  };
+
+  const resetear : HTMLElement | null = document.getElementById("reset");
+  if (resetear !== null && resetear !== undefined) {
+    resetear.addEventListener("click", reset);
+  };
+
+  const definir : HTMLElement | null = document.getElementById("cambiar-turno");
+  if (definir !== null && definir !== undefined) {
+    definir.addEventListener("click", definirTurno);
+  };
+
+};
+
+document.addEventListener("DOMContentLoaded", eventos);
+
 let turno : number = 0;
 
 function reset() : void {
@@ -45,24 +70,4 @@ const pintarTurno = () :void => {
       pintarTurnoElement.innerHTML = turno.toString().padStart(2, "0");
     };
   };
-};
-
-const siguiente : HTMLElement | null = document.getElementById("siguiente");
-if (siguiente !== null && siguiente !== undefined) {
-  siguiente.addEventListener("click", sumar);
-};
-
-const anterior : HTMLElement | null = document.getElementById("anterior");
-if (anterior !== null && anterior !== undefined) {
-  anterior.addEventListener("click", restar);
-};
-
-const resetear : HTMLElement | null = document.getElementById("reset");
-if (resetear !== null && resetear !== undefined) {
-  resetear.addEventListener("click", reset);
-};
-
-const definir : HTMLElement | null = document.getElementById("cambiar-turno");
-if (definir !== null && definir !== undefined) {
-  definir.addEventListener("click", definirTurno);
 };
