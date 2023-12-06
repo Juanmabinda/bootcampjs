@@ -6,7 +6,7 @@ Se agrega una validación para que el número de turno no sea negativo tanto
 cuando se presiona el botón "Anterior" o se define un nuevo turno.
  */
 
-const eventos = () => {
+const eventos = () : void => {
   const siguiente : HTMLElement | null = document.getElementById("siguiente");
   if (siguiente !== null && siguiente !== undefined) {
     siguiente.addEventListener("click", sumar);
