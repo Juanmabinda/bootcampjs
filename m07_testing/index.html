@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="src/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siete Y Media</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>SIETE Y MEDIA 🃏</h1>
+      <div class="container">
+        <h2>Instrucciones</h2>
+        <p>El objetivo del juego es sumar 7.5 o lo más cerca posible de este número sin pasarse.</p>
+        <p>Presioná "Dame Carta" para empezar.</p>
+        <p>Cartas del 1 al 7 valen <strong>su valor nominal</strong>. Sota, caballo y rey: <strong>0.5.</strong></p>
+
+      </div>
+      <p></p>
+      <img id="carta" src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg" alt="Carta de naipes boca abajo">
+      <br>
+      <button id="me-planto" disabled>Me Planto</button>
+      <button id="dame-carta">Dame Carta</button>
+      <br>
+      <div id="intentos">Intentos: 1</div>
+      <div class="texto-mayor" id="puntuacion">Tu puntuación: 0</div>
+      <div class="texto-mayor" id="puntuacion-me-planto"></div>
+      <div class="texto-mayor" id="que-hubiera-pasado"></div>
+      <button id="ver-carta" disabled>Ver</button>
+      <div class="nueva-partida">
+        <button id="nueva-partida" disabled>Nueva Partida</button>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
