@@ -63,9 +63,7 @@ export const puntuacionFinal = () : string => {
     mensaje = "Esaaaaa! Felicitaciones!! 🎉🎉🎉🎊";
   }else if(partida.puntuacion > 7.5) {
     mensaje = "Perdiste 😵";
-    deshabilitaBotonDameCarta();
-    deshabilitaBotonMePlanto();
-  }
+  };
 
   return mensaje;
 
