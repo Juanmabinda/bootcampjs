@@ -3,10 +3,6 @@ import "./style.css";
 import { partida } from "./modelo";
 
 import {
-  BOTON_ME_PLANTO,
-  BOTON_DAME_CARTA,
-  BOTON_NUEVA_PARTIDA,
-  BOTON_VER_CARTA,
   verSiguienteCarta,
   pintarIntentos,
   colocarCartaDadaVuelta,
@@ -22,17 +18,22 @@ import {
   dameCarta,
   generaCartaAleatoria,
   reiniciarPuntuacion,
-  generarNumeroAleatorio
+  generaNumeroAleatorio
 } from "./motor";
 
 const eventos = () => {
-  BOTON_ME_PLANTO?.addEventListener("click", mePlanto);
+  const botonMePlanto : HTMLElement | null = document.getElementById("me-planto");
+  botonMePlanto?.addEventListener("click", mePlanto);
 
-  BOTON_DAME_CARTA?.addEventListener("click", function() { dameCarta(generaCartaAleatoria(generarNumeroAleatorio())) } );
+  const botonDameCarta : HTMLElement | null = document.getElementById("dame-carta");
+  botonDameCarta?.addEventListener("click", function() { dameCarta(generaCartaAleatoria(generaNumeroAleatorio())) } );
 
-  BOTON_NUEVA_PARTIDA?.addEventListener("click", comenzarNuevaPartida);
+  const botonNuevaPartida : HTMLElement | null = document.getElementById("nueva-partida");
+  botonNuevaPartida?.addEventListener("click", comenzarNuevaPartida);
 
-  BOTON_VER_CARTA?.addEventListener("click", function() { verSiguienteCarta(generaCartaAleatoria(generarNumeroAleatorio())) } );
+  const botonVerCarta : HTMLElement | null = document.getElementById("ver-carta");
+
+  botonVerCarta?.addEventListener("click", function() { verSiguienteCarta(generaCartaAleatoria(generaNumeroAleatorio())) } );
 };
 
 document.addEventListener("DOMContentLoaded", eventos);

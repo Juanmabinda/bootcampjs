@@ -71,4 +71,35 @@ describe("Comprobar si ha ganado el juego", () => {
     });
 
   });
+
+  describe("Devuelve y suma el valor de la carta obtenida", () => {
+    it("Al sacar AS, debería sumar 1 a la puntuación", () => {
+      // Arrange
+      partida.puntuacion = 0;
+      const resultadoEsperado : number = 1;
+      vi.spyOn(global.Math, "random").mockReturnValue(0.05)
+      const numeroAleatorio : number = motor.generaCartaAleatoria(motor.generaNumeroAleatorio());
+
+      // Act
+      const resultado = motor.sumarPuntuacion(numeroAleatorio);
+
+      // Assert
+      expect(resultado).toBe(resultadoEsperado);
+    });
+
+    it("Al sacar rey, debería sumar 0.5 a la puntuación", () => {
+      // Arrange
+      partida.puntuacion = 0;
+      const resultadoEsperado : number = 0.5;
+      vi.spyOn(global.Math, "random").mockReturnValue(0.99)
+      const numeroAleatorio : number = motor.generaCartaAleatoria(motor.generaNumeroAleatorio());
+
+      // Act
+      const resultado = motor.sumarPuntuacion(numeroAleatorio);
+
+      // Assert
+      expect(resultado).toBe(resultadoEsperado);
+    });
+  });
+
 });

@@ -3,14 +3,6 @@ import {
   cartas
 } from "./modelo";
 
-import { sumarPuntuacion } from "./motor";
-
-
-export const BOTON_DAME_CARTA : HTMLElement | null = document.getElementById("dame-carta");
-export const BOTON_ME_PLANTO : HTMLElement | null = document.getElementById("me-planto");
-export const BOTON_NUEVA_PARTIDA : HTMLElement | null = document.getElementById("nueva-partida");
-export const BOTON_VER_CARTA : HTMLElement | null = document.getElementById("ver-carta");
-
 
 export const muestraPuntuacion = () : void => {
   const elementoPuntuacion : HTMLElement | null = document.getElementById("puntuacion");
@@ -21,53 +13,41 @@ export const muestraPuntuacion = () : void => {
 
 export const mostrarCarta = (numero : number) : void => {
   let srcCartaBack : string = cartas.back;
-
   const carta : HTMLElement | null = document.getElementById("carta");
 
   switch (numero) {
     case 1:
       srcCartaBack = cartas.as;
-      sumarPuntuacion(1);
       break;
     case 2:
       srcCartaBack = cartas.dos;
-      sumarPuntuacion(2);
       break;
     case 3:
       srcCartaBack = cartas.tres;
-      sumarPuntuacion(3);
       break;
     case 4:
       srcCartaBack = cartas.cuatro;
-      sumarPuntuacion(4);
       break;
     case 5:
       srcCartaBack = cartas.cinco;
-      sumarPuntuacion(5);
       break;
     case 6:
       srcCartaBack = cartas.seis;
-      sumarPuntuacion(6);
       break;
     case 7:
       srcCartaBack = cartas.siete;
-      sumarPuntuacion(7);
       break;
     case 10:
       srcCartaBack = cartas.sota;
-      sumarPuntuacion(0.5);
       break;
     case 11:
       srcCartaBack = cartas.caballo;
-      sumarPuntuacion(0.5);
       break;
     case 12:
       srcCartaBack = cartas.rey;
-      sumarPuntuacion(0.5);
       break;
     default:
       srcCartaBack = cartas.back;
-      sumarPuntuacion(0.5);
       break;
     };
 
@@ -77,50 +57,53 @@ export const mostrarCarta = (numero : number) : void => {
 };
 
 export const habilitaBotonVerCarta = () :void => {
-  if (BOTON_VER_CARTA instanceof HTMLButtonElement) {
-    BOTON_VER_CARTA.disabled = false;
+  const botonVerCarta : HTMLElement | null = document.getElementById("ver-carta");
+  if (botonVerCarta instanceof HTMLButtonElement) {
+    botonVerCarta.disabled = false;
   };
 };
 
 export const deshabilitaBotonDameCarta = () : void => {
-  if (BOTON_DAME_CARTA instanceof HTMLButtonElement) {
-    BOTON_DAME_CARTA.disabled = true;
+  const botonDameCarta : HTMLElement | null = document.getElementById("dame-carta");
+  if (botonDameCarta instanceof HTMLButtonElement) {
+    botonDameCarta.disabled = true;
   };
 }
 
 export const habilitaBotonDameCarta = () : void => {
-  if (BOTON_DAME_CARTA instanceof HTMLButtonElement) {
-    BOTON_DAME_CARTA.disabled = false;
+  const botonDameCarta : HTMLElement | null = document.getElementById("dame-carta");
+  if (botonDameCarta instanceof HTMLButtonElement) {
+    botonDameCarta.disabled = false;
   };
 }
 
 export const deshabilitaBotonVerCarta = () : void => {
-  if (BOTON_VER_CARTA instanceof HTMLButtonElement) {
-    BOTON_VER_CARTA.disabled = true;
+  const botonVerCarta : HTMLElement | null = document.getElementById("ver-carta");
+  if (botonVerCarta instanceof HTMLButtonElement) {
+    botonVerCarta.disabled = true;
   };
 }
 
 export const habilitaBotonNuevaPartida = () : void => {
-  if (BOTON_NUEVA_PARTIDA instanceof HTMLButtonElement) {
-    BOTON_NUEVA_PARTIDA.disabled = false;
+  const botonNuevaPartida : HTMLElement | null = document.getElementById("nueva-partida");
+  if (botonNuevaPartida instanceof HTMLButtonElement) {
+    botonNuevaPartida.disabled = false;
   };
 };
 
 export const habilitaBotonMePlanto = () : void => {
-  if (BOTON_ME_PLANTO instanceof HTMLButtonElement) {
-    BOTON_ME_PLANTO.disabled = false;
+  const botonMePlanto : HTMLElement | null = document.getElementById("me-planto");
+  if (botonMePlanto instanceof HTMLButtonElement) {
+    botonMePlanto.disabled = false;
   };
 };
 
 export const deshabilitaBotonMePlanto = () : void => {
-  if (BOTON_ME_PLANTO instanceof HTMLButtonElement) {
-    BOTON_ME_PLANTO.disabled = true;
+  const botonMePlanto : HTMLElement | null = document.getElementById("me-planto");
+  if (botonMePlanto instanceof HTMLButtonElement) {
+    botonMePlanto.disabled = true;
   };
 };
-
-
-
-
 
 export const pintarMensajeFinal = (mensaje : string) :void => {
   const puntuacionMePlantoElemento : HTMLElement | null = document.getElementById("puntuacion-me-planto");
@@ -173,8 +156,9 @@ export const queHubieraPasado = () : void => {
 };
 
 export const verSiguienteCarta = (numero : number) : void => {
+  const botonVerCarta : HTMLElement | null = document.getElementById("ver-carta");
   mostrarCarta(numero);
-  if (BOTON_VER_CARTA instanceof HTMLButtonElement) {
-    BOTON_VER_CARTA.disabled = true;
+  if (botonVerCarta instanceof HTMLButtonElement) {
+    botonVerCarta.disabled = true;
   };
 };
