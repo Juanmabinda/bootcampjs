@@ -117,30 +117,7 @@ export const deshabilitaBotonMePlanto = () : void => {
 };
 
 
-
-export const puntuacionFinal = () : void => {
-
-  let mensaje : string = "";
-
-  if (partida.puntuacion < 5) {
-    mensaje = "Fuiste muy conservador/a! 😝";
-  } else if (partida.puntuacion < 6 ) {
-    mensaje = "Apa te entró el cagazo, no? 🤭🤭🤭";
-  } else if (partida.puntuacion >= 6 && partida.puntuacion <= 7) {
-    mensaje = "Casi casi... 🙃🙃🙃";
-  } else if (partida.puntuacion === 7.5) {
-    mensaje = "Esaaaaa! Felicitaciones!! 🎉🎉🎉🎊";
-  }else if(partida.puntuacion > 7.5) {
-    mensaje = "Perdiste 😵";
-    deshabilitaBotonDameCarta();
-    deshabilitaBotonMePlanto();
-  }
-
-  pintarMensajeFinal(mensaje);
-
-};
-
-const pintarMensajeFinal = (mensaje : string) :void => {
+export const pintarMensajeFinal = (mensaje : string) :void => {
   const puntuacionMePlantoElemento : HTMLElement | null = document.getElementById("puntuacion-me-planto");
   if (puntuacionMePlantoElemento) {
     puntuacionMePlantoElemento.innerHTML = mensaje;
