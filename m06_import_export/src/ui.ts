@@ -3,8 +3,6 @@ import {
   cartas
 } from "./modelo";
 
-import { sumarPuntuacion } from "./motor";
-
 export const BOTON_DAME_CARTA = document.getElementById("dame-carta");
 export const BOTON_ME_PLANTO = document.getElementById("me-planto");
 export const BOTON_NUEVA_PARTIDA = document.getElementById("nueva-partida");
