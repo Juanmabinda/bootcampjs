@@ -11,21 +11,33 @@ import {
   pintarMensajeFinal
 } from "./ui";
 
-export const generaCartaAleatoria = () : number => {
-  let numeroAleatorio : number = Math.floor(Math.random() * 12) + 1;
+export const generaNumeroAleatorio = () : number => {
+  let numeroAleatorio : number = Math.floor(Math.random() * 10) + 1;
+  return numeroAleatorio
+};
 
-  if (numeroAleatorio == 8) {
-    numeroAleatorio = 7;
-  } else if(numeroAleatorio == 9) {
-    numeroAleatorio = 10;
+export const calculaValorCartaValido = (numeroAleatorio : number) : number => {
+  if (numeroAleatorio > 7) {
+    numeroAleatorio += 2;
   };
 
   return numeroAleatorio;
 };
 
+const asignaPuntuacion = (numero : number) : void => {
+  numero <= 7
+  ? sumarPuntuacion(numero)
+  : sumarPuntuacion(0.5);
+};
+
 export const dameCarta = (numero : number) : void => {
   mostrarCarta(numero);
+  asignaPuntuacion(numero);
   muestraPuntuacion();
+  comprobarPartida();
+};
+
+const comprobarPartida = () => {
   if (partida.puntuacion >= 7.5) {
     pintarMensajeFinal(puntuacionFinal());
     deshabilitaBotonMePlanto();
