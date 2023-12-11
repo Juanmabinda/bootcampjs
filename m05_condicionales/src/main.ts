@@ -1,13 +1,21 @@
 import "./style.css";
 
 const eventos = () :void => {
-  BOTON_ME_PLANTO?.addEventListener("click", mePlanto);
+  if(BOTON_ME_PLANTO != null && BOTON_ME_PLANTO != undefined) {
+    BOTON_ME_PLANTO?.addEventListener("click", mePlanto);
+  };
 
-  BOTON_DAME_CARTA?.addEventListener("click", function() { dameCarta(generaCartaAleatoria()) } );
+  if (BOTON_DAME_CARTA != null && BOTON_DAME_CARTA != undefined) {
+    BOTON_DAME_CARTA?.addEventListener("click", function() { dameCarta(calculaValorCartaValido(generaNumeroAleatorio())) } );
+  };
 
-  BOTON_NUEVA_PARTIDA?.addEventListener("click", comenzarNuevaPartida);
+  if (BOTON_NUEVA_PARTIDA != null && BOTON_NUEVA_PARTIDA != undefined) {
+    BOTON_NUEVA_PARTIDA?.addEventListener("click", comenzarNuevaPartida);
+  };
 
-  BOTON_VER_CARTA?.addEventListener("click", function() { verSiguienteCarta(generaCartaAleatoria()) } );
+  if(BOTON_VER_CARTA != null && BOTON_VER_CARTA != undefined) {
+    BOTON_VER_CARTA?.addEventListener("click", function() { verSiguienteCarta(calculaValorCartaValido(generaNumeroAleatorio())) } );
+  };
 };
 
 document.addEventListener("DOMContentLoaded", eventos);
@@ -42,26 +50,27 @@ const cartas : Cartas = {
 
 let puntuacion : number = 0;
 
-const BOTON_DAME_CARTA : HTMLElement | null = document.getElementById("dame-carta");
-const BOTON_ME_PLANTO : HTMLElement | null = document.getElementById("me-planto");
-const BOTON_NUEVA_PARTIDA : HTMLElement | null = document.getElementById("nueva-partida");
-const BOTON_VER_CARTA : HTMLElement | null = document.getElementById("ver-carta");
+const BOTON_DAME_CARTA = document.getElementById("dame-carta");
+const BOTON_ME_PLANTO = document.getElementById("me-planto");
+const BOTON_NUEVA_PARTIDA = document.getElementById("nueva-partida");
+const BOTON_VER_CARTA = document.getElementById("ver-carta");
 
 
 const muestraPuntuacion = () : void => {
-  const elementoPuntuacion : HTMLElement | null = document.getElementById("puntuacion");
-  if (elementoPuntuacion) {
+  const elementoPuntuacion = document.getElementById("puntuacion");
+  if (elementoPuntuacion != null && elementoPuntuacion != undefined) {
     elementoPuntuacion.innerHTML = `Tu puntuación: ${puntuacion.toString()}`;
   };
-}
+};
 
-const generaCartaAleatoria = () : number => {
-  let numeroAleatorio : number = Math.floor(Math.random() * 12) + 1;
+const generaNumeroAleatorio = () : number => {
+  let numeroAleatorio : number = Math.floor(Math.random() * 10) + 1;
+  return numeroAleatorio
+};
 
-  if (numeroAleatorio == 8) {
-    numeroAleatorio = 7;
-  } else if(numeroAleatorio == 9) {
-    numeroAleatorio = 10;
+const calculaValorCartaValido = (numeroAleatorio : number) : number => {
+  if (numeroAleatorio > 7) {
+    numeroAleatorio += 2;
   };
 
   return numeroAleatorio;
@@ -69,7 +78,12 @@ const generaCartaAleatoria = () : number => {
 
 const dameCarta = (numero : number) : void => {
   mostrarCarta(numero);
+  asignaPuntuacion(numero);
   muestraPuntuacion();
+  comprobarPartida();
+};
+
+const comprobarPartida = () => {
   if (puntuacion >= 7.5) {
     puntuacionFinal();
     deshabilitaBotonMePlanto();
@@ -80,55 +94,52 @@ const dameCarta = (numero : number) : void => {
   };
 };
 
+
+const asignaPuntuacion = (numero : number) : void => {
+  numero <= 7
+  ? sumarPuntuacion(numero)
+  : sumarPuntuacion(0.5);
+};
+
+
 const mostrarCarta = (numero : number) : void => {
   let srcCartaBack : string = cartas.back;
 
-  const carta : HTMLElement | null = document.getElementById("carta");
+  const carta = document.getElementById("carta");
 
   switch (numero) {
     case 1:
       srcCartaBack = cartas.as;
-      sumarPuntuacion(1);
       break;
     case 2:
       srcCartaBack = cartas.dos;
-      sumarPuntuacion(2);
       break;
     case 3:
       srcCartaBack = cartas.tres;
-      sumarPuntuacion(3);
       break;
     case 4:
       srcCartaBack = cartas.cuatro;
-      sumarPuntuacion(4);
       break;
     case 5:
       srcCartaBack = cartas.cinco;
-      sumarPuntuacion(5);
       break;
     case 6:
       srcCartaBack = cartas.seis;
-      sumarPuntuacion(6);
       break;
     case 7:
       srcCartaBack = cartas.siete;
-      sumarPuntuacion(7);
       break;
     case 10:
       srcCartaBack = cartas.sota;
-      sumarPuntuacion(0.5);
       break;
     case 11:
       srcCartaBack = cartas.caballo;
-      sumarPuntuacion(0.5);
       break;
     case 12:
       srcCartaBack = cartas.rey;
-      sumarPuntuacion(0.5);
       break;
     default:
       srcCartaBack = cartas.back;
-      sumarPuntuacion(0.5);
       break;
     };
 
@@ -213,7 +224,7 @@ const puntuacionFinal = () : void => {
 };
 
 const pintarMensajeFinal = (mensaje : string) :void => {
-  const puntuacionMePlantoElemento : HTMLElement | null = document.getElementById("puntuacion-me-planto");
+  const puntuacionMePlantoElemento = document.getElementById("puntuacion-me-planto");
   if (puntuacionMePlantoElemento) {
     puntuacionMePlantoElemento.innerHTML = mensaje;
   };
@@ -227,7 +238,7 @@ const colocarCartaDadaVuelta = () :void => {
 };
 
 const reiniciarMensajes = () :void => {
-  const puntuacionMePlantoElemento : HTMLElement | null = document.getElementById("puntuacion-me-planto");
+  const puntuacionMePlantoElemento = document.getElementById("puntuacion-me-planto");
   const textoQueHubieraPasado = document.getElementById("que-hubiera-pasado");
 
   if (puntuacionMePlantoElemento) {
