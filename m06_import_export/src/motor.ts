@@ -24,15 +24,18 @@ export const calculaValorCartaValido = (numeroAleatorio : number) : number => {
   return numeroAleatorio;
 };
 
-const asignaPuntuacion = (numero : number) : void => {
+const asignaPuntuacion = (numero : number) : number => {
+  let puntuacion : number = 0;
   numero <= 7
-  ? sumarPuntuacion(numero)
-  : sumarPuntuacion(0.5);
+  ? puntuacion = numero
+  : puntuacion = 0.5;
+
+  return puntuacion;
 };
 
 export const dameCarta = (numero : number) : void => {
   mostrarCarta(numero);
-  asignaPuntuacion(numero);
+  sumarPuntuacion(asignaPuntuacion(numero));
   muestraPuntuacion();
   comprobarPartida();
 };
