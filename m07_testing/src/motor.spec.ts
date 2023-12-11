@@ -44,14 +44,14 @@ describe("Comprobar si ha ganado el juego", () => {
 
   describe("generaCartaAleatoria", () => {
 
-    it("generaCartaAleatoria devuelve 10 si numeroAleatorio es igual a 8", () => {
+    it("calculaValorCartaValido devuelve 10 si numeroAleatorio es igual a 8", () => {
       // Arrange
       const resultadoEsperado : number = 10;
-      vi.spyOn(global.Math, "random").mockReturnValue(0.8);
+      vi.spyOn(global.Math, "random").mockReturnValue(0.7);
       const numeroAleatorio : number = motor.generaNumeroAleatorio();
 
       // Act
-      const resultado : number = motor.generaCartaAleatoria(numeroAleatorio);
+      const resultado : number = motor.calculaValorCartaValido(numeroAleatorio);
 
       // Assert
       expect(resultado).toBe(resultadoEsperado)
@@ -60,11 +60,11 @@ describe("Comprobar si ha ganado el juego", () => {
     it("generaCartaAleatoria debería devolver 11 si numeroAleatorio es igual a 9", () => {
       // Arrange
       const resultadoEsperado : number = 11;
-      vi.spyOn(global.Math, "random").mockReturnValue(0.9)
+      vi.spyOn(global.Math, "random").mockReturnValue(0.8)
       const numeroAleatorio : number = motor.generaNumeroAleatorio()
 
       // Act
-      const resultado : number = motor.generaCartaAleatoria(numeroAleatorio)
+      const resultado : number = motor.calculaValorCartaValido(numeroAleatorio)
 
       // Assert
       expect(resultado).toBe(resultadoEsperado);
@@ -73,29 +73,28 @@ describe("Comprobar si ha ganado el juego", () => {
   });
 
   describe("Devuelve y suma el valor de la carta obtenida", () => {
-    it("Al sacar AS, debería sumar 1 a la puntuación", () => {
+
+    it("Al sacar AS (1), debería sumar 1 a la puntuación", () => {
       // Arrange
       partida.puntuacion = 0;
       const resultadoEsperado : number = 1;
-      vi.spyOn(global.Math, "random").mockReturnValue(0.05)
-      const numeroAleatorio : number = motor.generaCartaAleatoria(motor.generaNumeroAleatorio());
+      const numeroAleatorio : number = 1;
 
       // Act
-      const resultado = motor.sumarPuntuacion(numeroAleatorio);
+      const resultado = motor.asignaPuntuacion(numeroAleatorio);
 
       // Assert
       expect(resultado).toBe(resultadoEsperado);
     });
 
-    it("Al sacar rey, debería sumar 0.5 a la puntuación", () => {
+    it("Al sacar rey (12), debería sumar 0.5 a la puntuación", () => {
       // Arrange
       partida.puntuacion = 0;
       const resultadoEsperado : number = 0.5;
-      vi.spyOn(global.Math, "random").mockReturnValue(0.99)
-      const numeroAleatorio : number = motor.generaCartaAleatoria(motor.generaNumeroAleatorio());
+      const numeroAleatorio : number = 12;
 
       // Act
-      const resultado = motor.sumarPuntuacion(numeroAleatorio);
+      const resultado = motor.asignaPuntuacion(numeroAleatorio);
 
       // Assert
       expect(resultado).toBe(resultadoEsperado);

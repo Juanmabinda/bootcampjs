@@ -5,7 +5,7 @@ import {
 
 
 export const muestraPuntuacion = () : void => {
-  const elementoPuntuacion : HTMLElement | null = document.getElementById("puntuacion");
+  const elementoPuntuacion = document.getElementById("puntuacion");
   if (elementoPuntuacion) {
     elementoPuntuacion.innerHTML = `Tu puntuación: ${partida.puntuacion.toString()}`;
   };
@@ -13,7 +13,7 @@ export const muestraPuntuacion = () : void => {
 
 export const mostrarCarta = (numero : number) : void => {
   let srcCartaBack : string = cartas.back;
-  const carta : HTMLElement | null = document.getElementById("carta");
+  const carta = document.getElementById("carta");
 
   switch (numero) {
     case 1:
@@ -57,56 +57,56 @@ export const mostrarCarta = (numero : number) : void => {
 };
 
 export const habilitaBotonVerCarta = () :void => {
-  const botonVerCarta : HTMLElement | null = document.getElementById("ver-carta");
+  const botonVerCarta = document.getElementById("ver-carta");
   if (botonVerCarta instanceof HTMLButtonElement) {
     botonVerCarta.disabled = false;
   };
 };
 
 export const deshabilitaBotonDameCarta = () : void => {
-  const botonDameCarta : HTMLElement | null = document.getElementById("dame-carta");
+  const botonDameCarta = document.getElementById("dame-carta");
   if (botonDameCarta instanceof HTMLButtonElement) {
     botonDameCarta.disabled = true;
   };
 }
 
 export const habilitaBotonDameCarta = () : void => {
-  const botonDameCarta : HTMLElement | null = document.getElementById("dame-carta");
+  const botonDameCarta = document.getElementById("dame-carta");
   if (botonDameCarta instanceof HTMLButtonElement) {
     botonDameCarta.disabled = false;
   };
 }
 
 export const deshabilitaBotonVerCarta = () : void => {
-  const botonVerCarta : HTMLElement | null = document.getElementById("ver-carta");
+  const botonVerCarta = document.getElementById("ver-carta");
   if (botonVerCarta instanceof HTMLButtonElement) {
     botonVerCarta.disabled = true;
   };
 }
 
 export const habilitaBotonNuevaPartida = () : void => {
-  const botonNuevaPartida : HTMLElement | null = document.getElementById("nueva-partida");
+  const botonNuevaPartida = document.getElementById("nueva-partida");
   if (botonNuevaPartida instanceof HTMLButtonElement) {
     botonNuevaPartida.disabled = false;
   };
 };
 
 export const habilitaBotonMePlanto = () : void => {
-  const botonMePlanto : HTMLElement | null = document.getElementById("me-planto");
+  const botonMePlanto = document.getElementById("me-planto");
   if (botonMePlanto instanceof HTMLButtonElement) {
     botonMePlanto.disabled = false;
   };
 };
 
 export const deshabilitaBotonMePlanto = () : void => {
-  const botonMePlanto : HTMLElement | null = document.getElementById("me-planto");
+  const botonMePlanto = document.getElementById("me-planto");
   if (botonMePlanto instanceof HTMLButtonElement) {
     botonMePlanto.disabled = true;
   };
 };
 
 export const pintarMensajeFinal = (mensaje : string) :void => {
-  const puntuacionMePlantoElemento : HTMLElement | null = document.getElementById("puntuacion-me-planto");
+  const puntuacionMePlantoElemento = document.getElementById("puntuacion-me-planto");
   if (puntuacionMePlantoElemento) {
     puntuacionMePlantoElemento.innerHTML = mensaje;
   };
@@ -120,7 +120,7 @@ export const colocarCartaDadaVuelta = () :void => {
 };
 
 export const reiniciarMensajes = () :void => {
-  const puntuacionMePlantoElemento : HTMLElement | null = document.getElementById("puntuacion-me-planto");
+  const puntuacionMePlantoElemento = document.getElementById("puntuacion-me-planto");
   const textoQueHubieraPasado = document.getElementById("que-hubiera-pasado");
 
   if (puntuacionMePlantoElemento) {
@@ -135,7 +135,7 @@ export const reiniciarMensajes = () :void => {
 
 
 export const pintarIntentos = (intentos : number) : void => {
-  const intentosElemento : HTMLElement | null = document.getElementById("intentos");
+  const intentosElemento = document.getElementById("intentos");
 
   if (intentosElemento) {
     intentosElemento.innerHTML = `Intentos: ${intentos}`;
@@ -156,7 +156,7 @@ export const queHubieraPasado = () : void => {
 };
 
 export const verSiguienteCarta = (numero : number) : void => {
-  const botonVerCarta : HTMLElement | null = document.getElementById("ver-carta");
+  const botonVerCarta = document.getElementById("ver-carta");
   mostrarCarta(numero);
   if (botonVerCarta instanceof HTMLButtonElement) {
     botonVerCarta.disabled = true;

@@ -11,22 +11,36 @@ import {
   pintarMensajeFinal
 } from "./ui";
 
-export const generaNumeroAleatorio = () :number => Math.floor(Math.random() * 12) + 1;
+export const generaNumeroAleatorio = () : number => {
+  let numeroAleatorio : number = Math.floor(Math.random() * 10) + 1;
+  return numeroAleatorio
+};
 
-export const generaCartaAleatoria = (numero : number) : number => {
-  let numeroAleatorio = numero
-
-  if (numeroAleatorio === 8 || numeroAleatorio === 9) {
+export const calculaValorCartaValido = (numeroAleatorio : number) : number => {
+  if (numeroAleatorio > 7) {
     numeroAleatorio += 2;
   };
 
   return numeroAleatorio;
 };
 
+export const asignaPuntuacion = (numero : number) : number => {
+  let puntuacion : number = 0;
+  numero <= 7
+  ? puntuacion = numero
+  : puntuacion = 0.5;
+
+  return puntuacion;
+};
+
 export const dameCarta = (numero : number) : void => {
   mostrarCarta(numero);
-  sumarPuntuacion(numero);
+  sumarPuntuacion(asignaPuntuacion(numero));
   muestraPuntuacion();
+  comprobarPartida();
+};
+
+const comprobarPartida = () => {
   if (partida.puntuacion >= 7.5) {
     pintarMensajeFinal(puntuacionFinal());
     deshabilitaBotonMePlanto();
@@ -37,43 +51,8 @@ export const dameCarta = (numero : number) : void => {
   };
 };
 
-export const sumarPuntuacion = (numero : number) : number => {
-  switch (numero) {
-    case 1:
-      partida.puntuacion += 1;
-      break;
-    case 2:
-      partida.puntuacion += 2;
-      break;
-    case 3:
-      partida.puntuacion += 3;
-      break;
-    case 4:
-      partida.puntuacion += 4;
-      break;
-    case 5:
-      partida.puntuacion += 5;
-      break;
-    case 6:
-      partida.puntuacion += 6;
-      break;
-    case 7:
-      partida.puntuacion += 7;
-      break;
-    case 10:
-      partida.puntuacion += 0.5;
-      break;
-    case 11:
-      partida.puntuacion += 0.5;
-      break;
-    case 12:
-      partida.puntuacion += 0.5;
-      break;
-    default:
-      partida.puntuacion += 0.5;
-      break;
-    };
-  return partida.puntuacion;
+export const sumarPuntuacion = (numero : number) : void => {
+  partida.puntuacion += numero;
 };
 
 export const mePlanto = () : void => {
@@ -84,7 +63,6 @@ export const mePlanto = () : void => {
 };
 
 export const reiniciarPuntuacion = () => partida.puntuacion = 0;
-
 
 export const puntuacionFinal = () : string => {
 
@@ -100,7 +78,7 @@ export const puntuacionFinal = () : string => {
     mensaje = "Esaaaaa! Felicitaciones!! 🎉🎉🎉🎊";
   }else if(partida.puntuacion > 7.5) {
     mensaje = "Perdiste 😵";
-  }
+  };
 
   return mensaje;
 
