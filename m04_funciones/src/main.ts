@@ -7,22 +7,22 @@ cuando se presiona el botón "Anterior" o se define un nuevo turno.
  */
 
 const eventos = () : void => {
-  const siguiente : HTMLElement | null = document.getElementById("siguiente");
+  const siguiente = document.getElementById("siguiente");
   if (siguiente !== null && siguiente !== undefined) {
     siguiente.addEventListener("click", sumar);
   };
 
-  const anterior : HTMLElement | null = document.getElementById("anterior");
+  const anterior = document.getElementById("anterior");
   if (anterior !== null && anterior !== undefined) {
     anterior.addEventListener("click", restar);
   };
 
-  const resetear : HTMLElement | null = document.getElementById("reset");
+  const resetear = document.getElementById("reset");
   if (resetear !== null && resetear !== undefined) {
     resetear.addEventListener("click", reset);
   };
 
-  const definir : HTMLElement | null = document.getElementById("cambiar-turno");
+  const definir = document.getElementById("cambiar-turno");
   if (definir !== null && definir !== undefined) {
     definir.addEventListener("click", definirTurno);
   };
@@ -51,7 +51,7 @@ function sumar() : void {
 };
 
 function definirTurno() : void {
-  const nuevoTurno : HTMLElement | null = document.getElementById("cambiar-numero");
+  const nuevoTurno = document.getElementById("cambiar-numero");
 
   if (nuevoTurno !== null && nuevoTurno !== undefined) {
     if (nuevoTurno instanceof HTMLInputElement) {
@@ -64,7 +64,7 @@ function definirTurno() : void {
   };
 
 const pintarTurno = () :void => {
-  const pintarTurnoElement : HTMLElement | null = document.getElementById("numero-turno");
+  const pintarTurnoElement = document.getElementById("numero-turno");
   if (turno >= 0) {
     if (pintarTurnoElement) {
       pintarTurnoElement.innerHTML = turno.toString().padStart(2, "0");
