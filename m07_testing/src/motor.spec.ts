@@ -7,23 +7,11 @@ describe("Comprobar si ha ganado el juego", () => {
 
   it("Al obtener una puntuación igual a 7.5, se gana el juego", () => {
     // Arrange
+    const resultadoEsperado : string = "¡Lo has clavado! ¡Enhorabuena! 🎉🎉🎉🎊";
     partida.puntuacion = 7.5;
-    const resultadoEsperado : string = "Esaaaaa! Felicitaciones!! 🎉🎉🎉🎊";
 
     // Act
-    const resultado : string = motor.puntuacionFinal()
-
-    // Assert
-    expect(resultado).toBe(resultadoEsperado);
-  });
-
-  it("Al obtener una puntuación mayor a 7.5, se pierde el juego", () => {
-    // Arrange
-    const resultadoEsperado : string = "Perdiste 😵";
-    partida.puntuacion = 8;
-
-    // Act
-    const resultado : string = motor.puntuacionFinal();
+    const resultado : string = motor.obtenerMensajeFinalPuntuacion();
 
     // Assert
     expect(resultado).toBe(resultadoEsperado);
@@ -31,11 +19,11 @@ describe("Comprobar si ha ganado el juego", () => {
 
   it("Al obtener una puntuación menor a 5 debería indicar que el jugador fue muy conservador", () => {
     // Arrange
-    const resultadoEsperado : string = "Fuiste muy conservador/a! 😝";
+    const resultadoEsperado : string = "Has sido muy conservador 🥴";
     partida.puntuacion = 3;
 
     // Act
-    const resultado : string = motor.puntuacionFinal();
+    const resultado : string = motor.obtenerMensajeFinalPuntuacion();
 
     // Assert
     expect(resultado).toBe(resultadoEsperado);

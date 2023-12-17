@@ -21,56 +21,56 @@ export const muestraPuntuacion = () : void => {
 
 export const habilitaBotonVerCarta = () :void => {
   const botonVerCarta = document.getElementById("ver-carta");
-  if (botonVerCarta instanceof HTMLButtonElement) {
+  if (botonVerCarta != null && botonVerCarta != undefined && botonVerCarta instanceof HTMLButtonElement) {
     botonVerCarta.disabled = false;
   };
 };
 
 export const pintarCarta = (cartaParaMostrar : string) : void => {
   const carta = document.getElementById("carta");
-  if (carta instanceof HTMLImageElement) {
+  if (carta != null && carta !== undefined && carta instanceof HTMLImageElement) {
     carta.src = cartaParaMostrar;
   };
 };
 
 export const deshabilitaBotonDameCarta = () : void => {
   const botonDameCarta = document.getElementById("dame-carta");
-  if (botonDameCarta instanceof HTMLButtonElement) {
+  if (botonDameCarta != null && botonDameCarta != undefined && botonDameCarta instanceof HTMLButtonElement) {
     botonDameCarta.disabled = true;
   };
 }
 
 export const habilitaBotonDameCarta = () : void => {
   const botonDameCarta = document.getElementById("dame-carta");
-  if (botonDameCarta instanceof HTMLButtonElement) {
+  if (botonDameCarta != null && botonDameCarta != undefined && botonDameCarta instanceof HTMLButtonElement) {
     botonDameCarta.disabled = false;
   };
 }
 
 export const deshabilitaBotonVerCarta = () : void => {
   const botonVerCarta = document.getElementById("ver-carta");
-  if (botonVerCarta instanceof HTMLButtonElement) {
+  if (botonVerCarta != null && botonVerCarta != undefined && botonVerCarta instanceof HTMLButtonElement) {
     botonVerCarta.disabled = true;
   };
 }
 
 export const habilitaBotonNuevaPartida = () : void => {
   const botonNuevaPartida = document.getElementById("nueva-partida");
-  if (botonNuevaPartida instanceof HTMLButtonElement) {
+  if (botonNuevaPartida != null && botonNuevaPartida != undefined && botonNuevaPartida instanceof HTMLButtonElement) {
     botonNuevaPartida.disabled = false;
   };
 };
 
 export const habilitaBotonMePlanto = () : void => {
   const botonMePlanto = document.getElementById("me-planto");
-  if (botonMePlanto instanceof HTMLButtonElement) {
+  if (botonMePlanto != null && botonMePlanto != undefined && botonMePlanto instanceof HTMLButtonElement) {
     botonMePlanto.disabled = false;
   };
 };
 
 export const deshabilitaBotonMePlanto = () : void => {
   const botonMePlanto = document.getElementById("me-planto");
-  if (botonMePlanto instanceof HTMLButtonElement) {
+  if (botonMePlanto != null && botonMePlanto  instanceof HTMLButtonElement) {
     botonMePlanto.disabled = true;
   };
 };

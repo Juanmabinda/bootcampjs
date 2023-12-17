@@ -1,4 +1,7 @@
-import { partida, cartas } from "./modelo";
+import {
+  partida,
+  cartas
+} from "./modelo";
 
 import {
   muestraPuntuacion,
@@ -75,8 +78,6 @@ export const asignaPuntuacion = (numero : number) : number => {
   return puntuacion;
 };
 
-
-
 export const dameCarta = () : void => {
   const numero : number = calculaValorCartaValido(generaNumeroAleatorio());
   pintarCarta(mostrarCarta(numero));
@@ -85,7 +86,7 @@ export const dameCarta = () : void => {
   comprobarPartida();
 };
 
-const comprobarPartida = () => {
+export const comprobarPartida = () => {
   if (partida.puntuacion >= 7.5) {
     puntuacionFinal();
     deshabilitaBotonMePlanto();
@@ -114,7 +115,7 @@ export const puntuacionFinal = () : void => {
   pintarMensajeFinal(mensaje);
 };
 
-const obtenerMensajeFinalPuntuacion = () :string => {
+export const obtenerMensajeFinalPuntuacion = () :string => {
   let mensaje : string = "";
 
   if (partida.puntuacion < 5) {
