@@ -16,31 +16,29 @@ import {
 import {
   mePlanto,
   dameCarta,
-  calculaValorCartaValido,
   reiniciarPuntuacion,
-  generaNumeroAleatorio
 } from "./motor";
 
 const eventos = () => {
   const botonMePlanto = document.getElementById("me-planto");
-  if (botonMePlanto != null && botonMePlanto != undefined) {
+  if (botonMePlanto != null && botonMePlanto != undefined && botonMePlanto instanceof HTMLButtonElement) {
     botonMePlanto.addEventListener("click", mePlanto);
   };
 
   const botonDameCarta = document.getElementById("dame-carta");
-  if (botonDameCarta != null && botonDameCarta != undefined) {
-    botonDameCarta?.addEventListener("click", function() { dameCarta(calculaValorCartaValido(generaNumeroAleatorio())) } );
+  if (botonDameCarta != null && botonDameCarta != undefined && botonDameCarta instanceof HTMLButtonElement) {
+    botonDameCarta.addEventListener("click", function() { dameCarta() } );
   };
 
 
   const botonNuevaPartida = document.getElementById("nueva-partida");
-  if (botonNuevaPartida != null && botonNuevaPartida != undefined) {
+  if (botonNuevaPartida != null && botonNuevaPartida != undefined && botonNuevaPartida instanceof HTMLButtonElement) {
     botonNuevaPartida.addEventListener("click", comenzarNuevaPartida);
   };
 
   const botonVerCarta = document.getElementById("ver-carta");
-  if (botonVerCarta != null && botonVerCarta != undefined) {
-    botonVerCarta?.addEventListener("click", function() { verSiguienteCarta(calculaValorCartaValido(generaNumeroAleatorio())) } );
+  if (botonVerCarta != null && botonVerCarta != undefined && botonVerCarta instanceof HTMLButtonElement) {
+    botonVerCarta.addEventListener("click", function() { verSiguienteCarta() } );
   };
 };
 

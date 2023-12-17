@@ -3,63 +3,33 @@ import {
   cartas
 } from "./modelo";
 
+import {
+  mostrarCarta,
+  calculaValorCartaValido,
+  generaNumeroAleatorio
+} from "./motor";
+
 
 export const muestraPuntuacion = () : void => {
   const elementoPuntuacion = document.getElementById("puntuacion");
-  if (elementoPuntuacion) {
+  if (elementoPuntuacion != null && elementoPuntuacion != undefined && elementoPuntuacion instanceof HTMLDivElement) {
     elementoPuntuacion.innerHTML = `Tu puntuación: ${partida.puntuacion.toString()}`;
   };
 };
 
-export const mostrarCarta = (numero : number) : void => {
-  let srcCartaBack : string = cartas.back;
-  const carta = document.getElementById("carta");
 
-  switch (numero) {
-    case 1:
-      srcCartaBack = cartas.as;
-      break;
-    case 2:
-      srcCartaBack = cartas.dos;
-      break;
-    case 3:
-      srcCartaBack = cartas.tres;
-      break;
-    case 4:
-      srcCartaBack = cartas.cuatro;
-      break;
-    case 5:
-      srcCartaBack = cartas.cinco;
-      break;
-    case 6:
-      srcCartaBack = cartas.seis;
-      break;
-    case 7:
-      srcCartaBack = cartas.siete;
-      break;
-    case 10:
-      srcCartaBack = cartas.sota;
-      break;
-    case 11:
-      srcCartaBack = cartas.caballo;
-      break;
-    case 12:
-      srcCartaBack = cartas.rey;
-      break;
-    default:
-      srcCartaBack = cartas.back;
-      break;
-    };
-
-  if (carta instanceof HTMLImageElement) {
-    carta.src = srcCartaBack;
-  };
-};
 
 export const habilitaBotonVerCarta = () :void => {
   const botonVerCarta = document.getElementById("ver-carta");
   if (botonVerCarta instanceof HTMLButtonElement) {
     botonVerCarta.disabled = false;
+  };
+};
+
+export const pintarCarta = (cartaParaMostrar : string) : void => {
+  const carta = document.getElementById("carta");
+  if (carta instanceof HTMLImageElement) {
+    carta.src = cartaParaMostrar;
   };
 };
 
@@ -114,7 +84,7 @@ export const pintarMensajeFinal = (mensaje : string) :void => {
 
 export const colocarCartaDadaVuelta = () :void => {
   const carta = document.getElementById("carta");
-  if (carta instanceof HTMLImageElement) {
+  if (carta != null && carta != undefined && carta instanceof HTMLImageElement) {
     carta.src = cartas.back;
   };
 };
@@ -145,20 +115,18 @@ export const pintarIntentos = (intentos : number) : void => {
 
 export const queHubieraPasado = () : void => {
   const textoQueHubieraPasado = document.getElementById("que-hubiera-pasado");
-
-  if (partida.puntuacion !== 7.5) {
-    if (textoQueHubieraPasado) {
-      textoQueHubieraPasado.innerHTML = "Querés ver cual hubiera sido la siguiente carta? 👇 "
+    if (textoQueHubieraPasado != null && textoQueHubieraPasado != undefined && textoQueHubieraPasado instanceof HTMLDivElement) {
+      textoQueHubieraPasado.innerHTML = "Quieres ver cual hubiera sido la siguiente carta? 👇 "
     };
 
     habilitaBotonVerCarta();
-  };
-};
+};;
 
-export const verSiguienteCarta = (numero : number) : void => {
+export const verSiguienteCarta = () : void => {
+  const numero : number = calculaValorCartaValido(generaNumeroAleatorio());
   const botonVerCarta = document.getElementById("ver-carta");
   mostrarCarta(numero);
-  if (botonVerCarta instanceof HTMLButtonElement) {
+  if (botonVerCarta != null && botonVerCarta !== undefined && botonVerCarta instanceof HTMLButtonElement) {
     botonVerCarta.disabled = true;
   };
 };
