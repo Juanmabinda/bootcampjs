@@ -20,9 +20,7 @@ import {
 import {
   mePlanto,
   dameCarta,
-  calculaValorCartaValido,
   reiniciarPuntuacion,
-  generaNumeroAleatorio
 } from "./motor";
 
 const eventos = () => {
