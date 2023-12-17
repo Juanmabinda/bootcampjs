@@ -1,20 +1,20 @@
 import "./style.css";
 
 const eventos = () :void => {
-  if(BOTON_ME_PLANTO != null && BOTON_ME_PLANTO != undefined) {
-    BOTON_ME_PLANTO?.addEventListener("click", mePlanto);
+  if(BOTON_ME_PLANTO != null && BOTON_ME_PLANTO != undefined && BOTON_ME_PLANTO instanceof HTMLButtonElement) {
+    BOTON_ME_PLANTO.addEventListener("click", mePlanto);
   };
 
-  if (BOTON_DAME_CARTA != null && BOTON_DAME_CARTA != undefined) {
-    BOTON_DAME_CARTA?.addEventListener("click", function() { dameCarta(calculaValorCartaValido(generaNumeroAleatorio())) } );
+  if (BOTON_DAME_CARTA != null && BOTON_DAME_CARTA != undefined && BOTON_DAME_CARTA instanceof HTMLButtonElement) {
+    BOTON_DAME_CARTA.addEventListener("click", function() { dameCarta() } );
   };
 
-  if (BOTON_NUEVA_PARTIDA != null && BOTON_NUEVA_PARTIDA != undefined) {
-    BOTON_NUEVA_PARTIDA?.addEventListener("click", comenzarNuevaPartida);
+  if (BOTON_NUEVA_PARTIDA != null && BOTON_NUEVA_PARTIDA != undefined && BOTON_NUEVA_PARTIDA instanceof HTMLButtonElement) {
+    BOTON_NUEVA_PARTIDA.addEventListener("click", comenzarNuevaPartida);
   };
 
-  if(BOTON_VER_CARTA != null && BOTON_VER_CARTA != undefined) {
-    BOTON_VER_CARTA?.addEventListener("click", function() { verSiguienteCarta(calculaValorCartaValido(generaNumeroAleatorio())) } );
+  if(BOTON_VER_CARTA != null && BOTON_VER_CARTA != undefined && BOTON_VER_CARTA instanceof HTMLButtonElement) {
+    BOTON_VER_CARTA.addEventListener("click", function() { verSiguienteCarta() } );
   };
 };
 
@@ -58,7 +58,7 @@ const BOTON_VER_CARTA = document.getElementById("ver-carta");
 
 const muestraPuntuacion = () : void => {
   const elementoPuntuacion = document.getElementById("puntuacion");
-  if (elementoPuntuacion != null && elementoPuntuacion != undefined) {
+  if (elementoPuntuacion != null && elementoPuntuacion != undefined && elementoPuntuacion instanceof HTMLDivElement) {
     elementoPuntuacion.innerHTML = `Tu puntuación: ${puntuacion.toString()}`;
   };
 };
@@ -76,8 +76,9 @@ const calculaValorCartaValido = (numeroAleatorio : number) : number => {
   return numeroAleatorio;
 };
 
-const dameCarta = (numero : number) : void => {
-  mostrarCarta(numero);
+const dameCarta = () : void => {
+  const numero : number = calculaValorCartaValido(generaNumeroAleatorio());
+  pintarCarta(mostrarCarta(numero));
   sumarPuntuacion(asignaPuntuacion(numero));
   muestraPuntuacion();
   comprobarPartida();
@@ -105,10 +106,8 @@ const asignaPuntuacion = (numero : number) : number => {
 };
 
 
-const mostrarCarta = (numero : number) : void => {
+const mostrarCarta = (numero : number) : string => {
   let srcCartaBack : string = cartas.back;
-
-  const carta = document.getElementById("carta");
 
   switch (numero) {
     case 1:
@@ -146,8 +145,13 @@ const mostrarCarta = (numero : number) : void => {
       break;
     };
 
+  return srcCartaBack;
+};
+
+const pintarCarta = (cartaParaMostrar : string) : void => {
+  const carta = document.getElementById("carta");
   if (carta instanceof HTMLImageElement) {
-    carta.src = srcCartaBack;
+    carta.src = cartaParaMostrar;
   };
 };
 
@@ -205,7 +209,11 @@ const mePlanto = () : void => {
 };
 
 const puntuacionFinal = () : void => {
+  let mensaje : string = obtenerMensajeFinalPuntuacion();
+  pintarMensajeFinal(mensaje);
+};
 
+const obtenerMensajeFinalPuntuacion = () :string => {
   let mensaje : string = "";
 
   if (puntuacion < 5) {
@@ -220,11 +228,11 @@ const puntuacionFinal = () : void => {
     mensaje = "Lo siento, has perdido 😵";
     deshabilitaBotonDameCarta();
     deshabilitaBotonMePlanto();
-  }
+  };
 
-  pintarMensajeFinal(mensaje);
-
+  return mensaje;
 };
+
 
 const pintarMensajeFinal = (mensaje : string) :void => {
   const puntuacionMePlantoElemento = document.getElementById("puntuacion-me-planto");
@@ -235,7 +243,7 @@ const pintarMensajeFinal = (mensaje : string) :void => {
 
 const colocarCartaDadaVuelta = () :void => {
   const carta = document.getElementById("carta");
-  if (carta instanceof HTMLImageElement) {
+  if (carta != null && carta != undefined && carta instanceof HTMLImageElement) {
     carta.src = cartas.back;
   };
 };
@@ -244,12 +252,12 @@ const reiniciarMensajes = () :void => {
   const puntuacionMePlantoElemento = document.getElementById("puntuacion-me-planto");
   const textoQueHubieraPasado = document.getElementById("que-hubiera-pasado");
 
-  if (puntuacionMePlantoElemento) {
+  if (puntuacionMePlantoElemento != null && puntuacionMePlantoElemento != undefined && puntuacionMePlantoElemento instanceof HTMLDivElement) {
     puntuacionMePlantoElemento.innerHTML = "";
   };
 
 
-  if (textoQueHubieraPasado) {
+  if (textoQueHubieraPasado != null && textoQueHubieraPasado != undefined && textoQueHubieraPasado instanceof HTMLDivElement) {
     textoQueHubieraPasado.innerHTML = ""
   };
 }
@@ -269,19 +277,17 @@ const comenzarNuevaPartida  = () : void => {
 
 const queHubieraPasado = () : void => {
   const textoQueHubieraPasado = document.getElementById("que-hubiera-pasado");
-
-  if (puntuacion !== 7.5) {
-    if (textoQueHubieraPasado) {
+    if (textoQueHubieraPasado != null && textoQueHubieraPasado != undefined && textoQueHubieraPasado instanceof HTMLDivElement) {
       textoQueHubieraPasado.innerHTML = "Quieres ver cual hubiera sido la siguiente carta? 👇 "
     };
 
     habilitaBotonVerCarta();
-  };
 };
 
-const verSiguienteCarta = (numero : number) : void => {
-  mostrarCarta(numero);
-  if (BOTON_VER_CARTA instanceof HTMLButtonElement) {
+const verSiguienteCarta = () : void => {
+  const numero : number = calculaValorCartaValido(generaNumeroAleatorio())
+  pintarCarta(mostrarCarta(numero));
+  if (BOTON_VER_CARTA != null && BOTON_VER_CARTA != undefined && BOTON_VER_CARTA instanceof HTMLButtonElement) {
     BOTON_VER_CARTA.disabled = true;
   };
 };
