@@ -226,8 +226,6 @@ const obtenerMensajeFinalPuntuacion = () :string => {
     mensaje = "¡Lo has clavado! ¡Enhorabuena! 🎉🎉🎉🎊";
   }else if(puntuacion > 7.5) {
     mensaje = "Lo siento, has perdido 😵";
-    deshabilitaBotonDameCarta();
-    deshabilitaBotonMePlanto();
   };
 
   return mensaje;
